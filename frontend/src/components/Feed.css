@@ -1,0 +1,72 @@
+@import '../assets/css/bootstrap.min.css';
+@import '../assets/css/common.css';
+@import '../assets/css/main.css';
+@import '../assets/css/responsive.css';
+
+/* Additional custom styles for React components */
+.loading {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2em;
+}
+
+._header_nav {
+    background: var(--bg2);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    padding: 0;
+}
+
+._layout_inner_wrap {
+    padding-top: 80px !important;
+}
+
+._custom_container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+@media (max-width: 991px) {
+    ._layout_inner_wrap {
+        padding-top: 70px !important;
+    }
+}
+
+.reply-input {
+    margin-top: 10px;
+}
+
+.reply-input input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+._feed_timeline_dropdown {
+    position: absolute;
+    background: var(--bg2);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    padding: 16px;
+    min-width: 200px;
+    right: 0;
+    z-index: 10;
+}
+
+._feed_timeline_dropdown_item {
+    margin-bottom: 10px;
+}
+
+._feed_timeline_dropdown_link {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+._feed_timeline_dropdown_link:hover {
+    color: var(--color5);
+}
