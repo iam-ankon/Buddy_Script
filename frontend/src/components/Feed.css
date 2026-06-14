@@ -1,72 +1,501 @@
-@import '../assets/css/bootstrap.min.css';
-@import '../assets/css/common.css';
-@import '../assets/css/main.css';
-@import '../assets/css/responsive.css';
+/* ============================================
+   IMPROVED COMMENT SECTION STYLES
+   ============================================ */
 
-/* Additional custom styles for React components */
-.loading {
-    text-align: center;
-    padding: 50px;
-    font-size: 1.2em;
+/* Comment Item */
+._comment_item_improved {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-._header_nav {
-    background: var(--bg2);
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
-    padding: 0;
+._dark_wrapper ._comment_item_improved {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
-._layout_inner_wrap {
-    padding-top: 80px !important;
+/* Avatar */
+._comment_avatar_improved {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
 }
 
-._custom_container {
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 15px;
+._comment_avatar_improved img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-@media (max-width: 991px) {
-    ._layout_inner_wrap {
-        padding-top: 70px !important;
-    }
+/* Comment Content */
+._comment_content_improved {
+  flex: 1;
+  min-width: 0;
 }
 
-.reply-input {
-    margin-top: 10px;
+/* Comment Bubble */
+._comment_bubble_improved {
+  background: #f0f2f5;
+  border-radius: 18px;
+  padding: 10px 16px;
+  margin-bottom: 4px;
 }
 
-.reply-input input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+._dark_wrapper ._comment_bubble_improved {
+  background: #3a3b3c;
 }
 
-._feed_timeline_dropdown {
-    position: absolute;
-    background: var(--bg2);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
-    border-radius: 6px;
-    padding: 16px;
-    min-width: 200px;
-    right: 0;
-    z-index: 10;
+/* Comment Header */
+._comment_header_improved {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
 }
 
-._feed_timeline_dropdown_item {
-    margin-bottom: 10px;
+._comment_author_improved {
+  font-weight: 600;
+  font-size: 13px;
+  color: #050505;
+  text-decoration: none;
 }
 
-._feed_timeline_dropdown_link {
-    cursor: pointer;
-    transition: all 0.3s ease;
+._dark_wrapper ._comment_author_improved {
+  color: #e4e6eb;
 }
 
-._feed_timeline_dropdown_link:hover {
-    color: var(--color5);
+._comment_author_improved:hover {
+  text-decoration: underline;
+}
+
+._comment_time_improved {
+  font-size: 11px;
+  color: #65676b;
+}
+
+._dark_wrapper ._comment_time_improved {
+  color: #b0b3b8;
+}
+
+/* Comment Text */
+._comment_text_improved {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #050505;
+  margin: 0;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+._dark_wrapper ._comment_text_improved {
+  color: #e4e6eb;
+}
+
+/* Comment Actions */
+._comment_actions_improved {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+._action_btn_improved {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #65676b;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+._dark_wrapper ._action_btn_improved {
+  color: #b0b3b8;
+}
+
+._action_btn_improved:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+._dark_wrapper ._action_btn_improved:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+._action_btn_improved svg {
+  width: 14px;
+  height: 14px;
+}
+
+._action_count {
+  margin-left: 2px;
+}
+
+/* Reply Container */
+._reply_container_improved {
+  margin-top: 8px;
+  margin-left: 0;
+}
+
+/* Reply Form */
+._reply_form_improved {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+._reply_avatar_improved {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+}
+
+._reply_avatar_improved img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+._reply_input_wrapper_improved {
+  flex: 1;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: #f0f2f5;
+  border-radius: 20px;
+  padding: 4px 12px;
+}
+
+._dark_wrapper ._reply_input_wrapper_improved {
+  background: #3a3b3c;
+}
+
+._reply_textarea_improved {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 8px 0;
+  font-size: 13px;
+  resize: none;
+  outline: none;
+  font-family: inherit;
+  color: #050505;
+}
+
+._dark_wrapper ._reply_textarea_improved {
+  color: #e4e6eb;
+}
+
+._reply_textarea_improved::placeholder {
+  color: #65676b;
+}
+
+._dark_wrapper ._reply_textarea_improved::placeholder {
+  color: #b0b3b8;
+}
+
+._reply_submit_btn_improved {
+  background: none;
+  border: none;
+  color: #1877f2;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 20px;
+  transition: background 0.2s;
+}
+
+._reply_submit_btn_improved:hover {
+  background: rgba(24, 119, 242, 0.1);
+}
+
+/* Add Comment Section */
+._add_comment_improved {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+._dark_wrapper ._add_comment_improved {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+._add_comment_avatar_improved {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+}
+
+._add_comment_avatar_improved img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+._add_comment_form_improved {
+  flex: 1;
+}
+
+._comment_input_wrapper_improved {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f0f2f5;
+  border-radius: 20px;
+  padding: 4px 12px;
+}
+
+._dark_wrapper ._comment_input_wrapper_improved {
+  background: #3a3b3c;
+}
+
+._comment_textarea_improved {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px 0;
+  font-size: 14px;
+  resize: none;
+  outline: none;
+  font-family: inherit;
+  color: #050505;
+  max-height: 80px;
+  overflow-y: auto;
+}
+
+._dark_wrapper ._comment_textarea_improved {
+  color: #e4e6eb;
+}
+
+._comment_textarea_improved::placeholder {
+  color: #65676b;
+}
+
+._dark_wrapper ._comment_textarea_improved::placeholder {
+  color: #b0b3b8;
+}
+
+._comment_submit_btn_improved {
+  background: #1877f2;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+._comment_submit_btn_improved:hover {
+  background: #166fe5;
+}
+
+._comment_submit_btn_improved:disabled {
+  background: #e4e6eb;
+  cursor: not-allowed;
+}
+
+._dark_wrapper ._comment_submit_btn_improved:disabled {
+  background: #3a3b3c;
+}
+
+._comment_submit_btn_improved svg {
+  stroke: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  ._comment_item_improved {
+    gap: 8px;
+  }
+  
+  ._comment_avatar_improved {
+    width: 32px;
+    height: 32px;
+  }
+  
+  ._comment_bubble_improved {
+    padding: 8px 12px;
+  }
+  
+  ._comment_text_improved {
+    font-size: 13px;
+  }
+  
+  ._action_btn_improved span:not(.action-count) {
+    display: none;
+  }
+  
+  ._action_btn_improved svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Fix for Write Something Textarea - White Box Issue */
+._feed_inner_text_area_box_form {
+  flex: 1;
+  position: relative;
+}
+
+._textarea {
+  background-color: #f0f2f5 !important;
+  border: none !important;
+  border-radius: 24px !important;
+  padding: 12px 16px !important;
+  font-size: 15px !important;
+  resize: none !important;
+  min-height: 50px !important;
+  transition: all 0.2s ease;
+}
+
+._dark_wrapper ._textarea {
+  background-color: #3a3b3c !important;
+  color: #e4e6eb !important;
+}
+
+._textarea:focus {
+  background-color: #ffffff !important;
+  border: 1px solid #1877f2 !important;
+  box-shadow: none !important;
+}
+
+._dark_wrapper ._textarea:focus {
+  background-color: #4e4f52 !important;
+  border-color: #1877f2 !important;
+}
+
+._feed_textarea_label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #65676b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+._dark_wrapper ._feed_textarea_label {
+  color: #b0b3b8;
+}
+
+._textarea:focus + ._feed_textarea_label,
+._textarea:not(:placeholder-shown) + ._feed_textarea_label {
+  top: 8px;
+  transform: translateY(0);
+  font-size: 11px;
+  color: #1877f2;
+}
+
+._textarea::placeholder {
+  color: transparent;
+}
+
+._feed_textarea_label svg {
+  opacity: 0.6;
+}
+
+/* Alternative simpler fix if the above doesn't work */
+.form-floating > ._textarea {
+  height: auto !important;
+  min-height: 50px !important;
+}
+
+.form-floating > ._feed_textarea_label {
+  padding: 0 16px !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+/* Replies Container */
+._replies_container_improved {
+  margin-top: 12px;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+._reply_item_improved {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+._reply_bubble_improved {
+  flex: 1;
+  background: #eef3fa;
+  border-radius: 16px;
+  padding: 8px 12px;
+}
+
+._dark_wrapper ._reply_bubble_improved {
+  background: #2d2e32;
+}
+
+._reply_header_improved {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+
+._reply_author_improved {
+  font-weight: 600;
+  font-size: 12px;
+  color: #050505;
+  text-decoration: none;
+}
+
+._dark_wrapper ._reply_author_improved {
+  color: #e4e6eb;
+}
+
+._reply_time_improved {
+  font-size: 10px;
+  color: #65676b;
+}
+
+._dark_wrapper ._reply_time_improved {
+  color: #b0b3b8;
+}
+
+._reply_text_improved {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #050505;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+._dark_wrapper ._reply_text_improved {
+  color: #e4e6eb;
+}
+
+._reply_actions_improved {
+  margin-top: 4px;
+}
+
+._reply_actions_improved ._action_btn_improved {
+  padding: 2px 6px;
+  font-size: 11px;
 }
