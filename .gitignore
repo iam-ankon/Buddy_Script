@@ -19,7 +19,7 @@ venv/
 # Node.js
 node_modules/
 
-
+public/
 # React/Vite
 dist/
 .vite/
