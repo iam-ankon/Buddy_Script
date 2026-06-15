@@ -98,17 +98,23 @@ USE_TZ = True
 # Cloudinary storage for media files
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# ============ FIXED STATIC FILES CONFIGURATION ============
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Remove or comment out STATICFILES_DIRS if the directory doesn't exist
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-# ]
+# Add this to collect Django's admin static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
-# Use the simpler storage backend that doesn't compress or process CSS references
-STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
+# Make sure you have this line
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
+
+# Use this storage for better static file handling
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Alternative: If you want compression but can fix the CSS references, use:
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
