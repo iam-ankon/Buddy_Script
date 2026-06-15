@@ -1,10 +1,8 @@
-
 from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
 import cloudinary
-import os, dj_database_url  # add dj_database_url
-
+import os, dj_database_url
 
 load_dotenv()
 
@@ -14,7 +12,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-26-qz(6^@%&uf*-m1#q
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['buddy-script-backend-s1zm.onrender.com']
+ALLOWED_HOSTS = ['buddy-script-backend-s1zm.onrender.com', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -32,7 +30,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',   # ← ADD THIS
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,17 +60,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'social_backend.wsgi.application'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'social_media_db',
-#         'USER': 'ankon1',
-#         'PASSWORD': 'ankon12345',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
+# Database
 DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv('DATABASE_URL'),
@@ -80,17 +68,12 @@ DATABASES = {
     )
 }
 
-
-# Cloudinary config
+# Cloudinary config - FIX: Use environment variables correctly
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv('df1ha3spa'),
-    'API_KEY': os.getenv('293153555884315'),
-    'API_SECRET': os.getenv('hjVTGSdsmoZtwWvcMgLCzAs7t8c'),
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME', 'df1ha3spa'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY', '293153555884315'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET', 'hjVTGSdsmoZtwWvcMgLCzAs7t8c'),
 }
-
-
-
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -112,29 +95,38 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
+# Cloudinary storage for media files
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+# ============ FIXED STATIC FILES CONFIGURATION ============
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Remove or comment out STATICFILES_DIRS if the directory doesn't exist
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
+
+# Use the simpler storage backend that doesn't compress or process CSS references
+STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
+
+# Alternative: If you want compression but can fix the CSS references, use:
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+# Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# CORS settings
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
     'https://buddy-script-2v2x.onrender.com',
-
 ]
 CORS_ALLOW_CREDENTIALS = True
 
+# REST Framework settings
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -146,6 +138,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20
 }
 
+# JWT settings
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=24),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
