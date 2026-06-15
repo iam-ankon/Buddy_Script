@@ -8,3 +8,4 @@ python-dotenv==1.0.1
 dj-database-url==2.1.0       # ← ADD THIS
 gunicorn==21.2.0              # ← ADD THIS
 whitenoise==6.6.0             # ← ADD THIS (serves static files)
+Pillow==10.2.0
