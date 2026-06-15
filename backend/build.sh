@@ -15,13 +15,15 @@ echo "📁 Creating directories..."
 mkdir -p staticfiles
 mkdir -p static
 
+# Collect static files - THIS IS CRITICAL
+echo "📁 Collecting static files..."
+python manage.py collectstatic --no-input --clear -v 2
+
 # Run migrations
 echo "🔄 Running database migrations..."
 python manage.py migrate
 
-# Collect static files - THIS IS CRITICAL
-echo "📁 Collecting static files..."
-python manage.py collectstatic --no-input --clear -v 2
+
 
 # List collected static files (for debugging)
 echo "📋 Static files collected:"
