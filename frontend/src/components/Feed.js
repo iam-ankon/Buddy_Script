@@ -60,7 +60,7 @@ const Feed = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('http://buddy-script-backend-s1zm.onrender.com//api/posts/');
+      const response = await axios.get('https://buddy-script-backend-s1zm.onrender.com/api/posts/');
       // Ensure comments have their replies nested properly
       const postsData = response.data.results || response.data;
 
@@ -83,7 +83,7 @@ const Feed = () => {
 
   const fetchSuggestedPeople = async () => {
     try {
-      const response = await axios.get('http://https://buddy-script-backend-s1zm.onrender.com//api/users/suggested/');
+      const response = await axios.get('https://buddy-script-backend-s1zm.onrender.com/api/users/suggested/');
       setSuggestedPeople(response.data);
     } catch (error) {
       console.error('Error fetching suggested people:', error);
@@ -92,7 +92,7 @@ const Feed = () => {
 
   const fetchFriends = async () => {
     try {
-      const response = await axios.get('http://https://buddy-script-backend-s1zm.onrender.com//api/friends/');
+      const response = await axios.get('https://buddy-script-backend-s1zm.onrender.com/api/friends/');
       setFriends(response.data);
     } catch (error) {
       console.error('Error fetching friends:', error);
@@ -101,7 +101,7 @@ const Feed = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('http://https://buddy-script-backend-s1zm.onrender.com//api/events/');
+      const response = await axios.get('https://buddy-script-backend-s1zm.onrender.com/api/events/');
       setEvents(response.data);
     } catch (error) {
       console.error('Error fetching events:', error);
@@ -110,7 +110,7 @@ const Feed = () => {
 
   const fetchNotifications = async () => {
     try {
-      const response = await axios.get('http://https://buddy-script-backend-s1zm.onrender.com//api/notifications/');
+      const response = await axios.get('https://buddy-script-backend-s1zm.onrender.com/api/notifications/');
       setNotifications(response.data);
     } catch (error) {
       console.error('Error fetching notifications:', error);
@@ -133,7 +133,7 @@ const Feed = () => {
       formData.append('image', newPost.image);
     }
     try {
-      const response = await axios.post('http://https://buddy-script-backend-s1zm.onrender.com//api/posts/', formData, {
+      const response = await axios.post('https://buddy-script-backend-s1zm.onrender.com/api/posts/', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       // Fix: Ensure the response data is properly added to the beginning of posts array
@@ -151,7 +151,7 @@ const Feed = () => {
 
   const handleLike = async (postId) => {
     try {
-      await axios.post(`http://https://buddy-script-backend-s1zm.onrender.com//api/posts/${postId}/like/`);
+      await axios.post(`https://buddy-script-backend-s1zm.onrender.com/api/posts/${postId}/like/`);
       fetchPosts();
     } catch (error) {
       console.error('Error liking post:', error);
@@ -162,7 +162,7 @@ const Feed = () => {
     const content = commentInputs[postId];
     if (!content?.trim()) return;
     try {
-      await axios.post(`http://https://buddy-script-backend-s1zm.onrender.com//api/posts/${postId}/comment/`, { content });
+      await axios.post(`https://buddy-script-backend-s1zm.onrender.com/api/posts/${postId}/comment/`, { content });
       setCommentInputs({ ...commentInputs, [postId]: '' });
       fetchPosts();
     } catch (error) {
@@ -172,7 +172,7 @@ const Feed = () => {
 
   const handleCommentLike = async (commentId) => {
     try {
-      await axios.post(`http://https://buddy-script-backend-s1zm.onrender.com//api/comments/${commentId}/like/`);
+      await axios.post(`https://buddy-script-backend-s1zm.onrender.com/api/comments/${commentId}/like/`);
       fetchPosts();
     } catch (error) {
       console.error('Error liking comment:', error);
@@ -183,7 +183,7 @@ const Feed = () => {
     const content = replyInputs[commentId];
     if (!content?.trim()) return;
     try {
-      await axios.post(`http://https://buddy-script-backend-s1zm.onrender.com//api/comments/${commentId}/reply/`, { content });
+      await axios.post(`https://buddy-script-backend-s1zm.onrender.com/api/comments/${commentId}/reply/`, { content });
       setReplyInputs({ ...replyInputs, [commentId]: '' });
       fetchPosts();
     } catch (error) {
@@ -193,7 +193,7 @@ const Feed = () => {
 
   const handleEditPost = async (postId) => {
     try {
-      await axios.patch(`http://https://buddy-script-backend-s1zm.onrender.com//api/posts/${postId}/`, { content: editContent });
+      await axios.patch(`https://buddy-script-backend-s1zm.onrender.com/api/posts/${postId}/`, { content: editContent });
       setEditingPost(null);
       setEditContent('');
       fetchPosts();
@@ -205,7 +205,7 @@ const Feed = () => {
   const handleDeletePost = async (postId) => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       try {
-        await axios.delete(`http://https://buddy-script-backend-s1zm.onrender.com//api/posts/${postId}/`);
+        await axios.delete(`https://buddy-script-backend-s1zm.onrender.com/api/posts/${postId}/`);
         fetchPosts();
       } catch (error) {
         console.error('Error deleting post:', error);
@@ -215,7 +215,7 @@ const Feed = () => {
 
   const handleFollowUser = async (userId) => {
     try {
-      await axios.post(`http://https://buddy-script-backend-s1zm.onrender.com//api/users/${userId}/follow/`);
+      await axios.post(`https://buddy-script-backend-s1zm.onrender.com/api/users/${userId}/follow/`);
       fetchSuggestedPeople();
     } catch (error) {
       console.error('Error following user:', error);
@@ -224,7 +224,7 @@ const Feed = () => {
 
   const handleGoingToEvent = async (eventId) => {
     try {
-      await axios.post(`http://https://buddy-script-backend-s1zm.onrender.com//api/events/${eventId}/going/`);
+      await axios.post(`https://buddy-script-backend-s1zm.onrender.com/api/events/${eventId}/going/`);
       fetchEvents();
     } catch (error) {
       console.error('Error joining event:', error);

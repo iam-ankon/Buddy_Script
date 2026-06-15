@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('http://buddy-script-backend-s1zm.onrender.com/api/login/', {
+      const response = await axios.post('https://buddy-script-backend-s1zm.onrender.com/api/login/', {
         email,
         password
       });
@@ -74,7 +74,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const response = await axios.post('http://buddy-script-backend-s1zm.onrender.com/api/register/', userData);
+      const response = await axios.post('https://buddy-script-backend-s1zm.onrender.com/api/register/', userData);
       if (response.data) {
         toast.success('Registration successful! Please login.');
         return true;
