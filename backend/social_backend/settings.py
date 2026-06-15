@@ -2,7 +2,7 @@
 from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
-import cloudinary
+# import cloudinary
 import os, dj_database_url  # add dj_database_url
 
 
