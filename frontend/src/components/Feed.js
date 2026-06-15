@@ -841,7 +841,7 @@ const Feed = () => {
                                 const content = commentInputs[post.id];
                                 if (!content?.trim()) return;
                                 try {
-                                  await axios.post(`http://https://buddy-script-backend-s1zm.onrender.com//api/posts/${post.id}/comment/`, { content });
+                                  await axios.post(`https://buddy-script-backend-s1zm.onrender.com/api/posts/${post.id}/comment/`, { content });
                                   setCommentInputs({ ...commentInputs, [post.id]: '' });
                                   await fetchPosts(); // Refresh to show the new comment
                                 } catch (error) {
