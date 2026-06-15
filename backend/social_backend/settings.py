@@ -99,7 +99,7 @@ USE_TZ = True
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # ============ FIXED STATIC FILES CONFIGURATION ============
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Use simple storage without compression to avoid missing file errors

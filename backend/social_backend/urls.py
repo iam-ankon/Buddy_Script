@@ -1,3 +1,5 @@
+import os
+
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -8,6 +10,7 @@ urlpatterns = [
     path('api/', include('api.urls')),
 ]
 
-# Serve static and media files in production
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Only serve static files in debug mode or when static files aren't collected
+if settings.DEBUG or not os.path.exists(settings.STATIC_ROOT):
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
