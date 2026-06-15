@@ -1,7 +1,9 @@
-import os
+
 from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
+import os, dj_database_url  # add dj_database_url
+
 
 load_dotenv()
 
@@ -9,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-26-qz(6^@%&uf*-m1#q9%gxzz(+1h8@5@fi@!9d+40#4kreb2c')
 
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
@@ -27,6 +29,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',   # ← ADD THIS
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,28 +59,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'social_backend.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'social_media_db',
-        'USER': 'ankon1',
-        'PASSWORD': 'ankon12345',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-
-# PostgreSQL Database Configuration
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('DB_NAME', 'social_media_db'),
-#         'USER': os.getenv('DB_USER', 'ankon1'),  # Replace with your username
-#         'PASSWORD': os.getenv('DB_PASSWORD', 'ankon12345'),  # Replace with your password
-#         'HOST': os.getenv('DB_HOST', 'localhost'),
-#         'PORT': os.getenv('DB_PORT', '5432'),
+#         'NAME': 'social_media_db',
+#         'USER': 'ankon1',
+#         'PASSWORD': 'ankon12345',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
 #     }
 # }
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600
+    )
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -102,6 +100,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
