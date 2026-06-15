@@ -98,23 +98,9 @@ USE_TZ = True
 # Cloudinary storage for media files
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# ============ FIXED STATIC FILES CONFIGURATION ============
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'  # MUST have leading and trailing slashes
+# ============ STATIC FILES CONFIGURATION ============
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# CRITICAL: Tell Django where to find static files
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-
-# Ensure Django finds app static files
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',  # This finds admin static files
-]
-
-# Use Django's default storage
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Media files
