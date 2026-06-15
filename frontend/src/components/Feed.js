@@ -173,7 +173,21 @@ const Feed = () => {
   const handleCommentLike = async (commentId) => {
     try {
       await axios.post(`https://buddy-script-backend-s1zm.onrender.com/api/comments/${commentId}/like/`);
-      fetchPosts();
+      // Optimistically update the specific comment in state
+      setPosts(prevPosts => prevPosts.map(post => ({
+        ...post,
+        comments: post.comments.map(comment => {
+          if (comment.id === commentId) {
+            const liked = comment.user_has_liked;
+            return {
+              ...comment,
+              user_has_liked: !liked,
+              likes_count: liked ? comment.likes_count - 1 : comment.likes_count + 1,
+            };
+          }
+          return comment;
+        })
+      })));
     } catch (error) {
       console.error('Error liking comment:', error);
     }
@@ -182,7 +196,24 @@ const Feed = () => {
   const handleReplyLike = async (replyId) => {
     try {
       await axios.post(`https://buddy-script-backend-s1zm.onrender.com/api/comments/${replyId}/like/`);
-      fetchPosts();
+      // Optimistically update the specific reply in state
+      setPosts(prevPosts => prevPosts.map(post => ({
+        ...post,
+        comments: post.comments.map(comment => ({
+          ...comment,
+          replies: comment.replies.map(reply => {
+            if (reply.id === replyId) {
+              const liked = reply.user_has_liked;
+              return {
+                ...reply,
+                user_has_liked: !liked,
+                likes_count: liked ? reply.likes_count - 1 : reply.likes_count + 1,
+              };
+            }
+            return reply;
+          })
+        }))
+      })));
     } catch (error) {
       console.error('Error liking reply:', error);
     }
