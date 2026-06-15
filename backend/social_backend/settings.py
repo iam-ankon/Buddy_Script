@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-26-qz(6^@%&uf*-m1#q
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['https://buddy-script-backend-s1zm.onrender.com/']
+ALLOWED_HOSTS = ['https://buddy-script-backend-s1zm.onrender.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
