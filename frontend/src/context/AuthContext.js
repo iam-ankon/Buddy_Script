@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
           
           // Optional: Verify token with backend
           // try {
-          //   await axios.get('http://localhost:8000/api/verify-token/');
+          //   await axios.get('http://https://buddy-script-backend-s1zm.onrender.com//api/verify-token/');
           //   setUser(userData);
           // } catch (error) {
           //   // Token is invalid, clear storage
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:8000/api/login/', {
+      const response = await axios.post('http://https://buddy-script-backend-s1zm.onrender.com//api/login/', {
         email,
         password
       });
@@ -74,7 +74,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const response = await axios.post('http://localhost:8000/api/register/', userData);
+      const response = await axios.post('http://https://buddy-script-backend-s1zm.onrender.com//api/register/', userData);
       if (response.data) {
         toast.success('Registration successful! Please login.');
         return true;

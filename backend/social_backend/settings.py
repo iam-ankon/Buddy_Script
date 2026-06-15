@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-26-qz(6^@%&uf*-m1#q
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://buddy-script-backend-s1zm.onrender.com/']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -107,7 +107,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    'https://buddy-script.onrender.com',
+
+]
 CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
