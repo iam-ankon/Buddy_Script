@@ -2,7 +2,7 @@
 from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
-# import cloudinary
+import cloudinary
 import os, dj_database_url  # add dj_database_url
 
 
@@ -22,9 +22,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    # 'cloudinary_storage',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
-    # 'cloudinary',           
+    'cloudinary',           
     'rest_framework',
     'corsheaders',
     'api',
@@ -82,11 +82,11 @@ DATABASES = {
 
 
 # Cloudinary config
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': os.getenv('df1ha3spa'),
-#     'API_KEY': os.getenv('293153555884315'),
-#     'API_SECRET': os.getenv('hjVTGSdsmoZtwWvcMgLCzAs7t8c'),
-# }
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('df1ha3spa'),
+    'API_KEY': os.getenv('293153555884315'),
+    'API_SECRET': os.getenv('hjVTGSdsmoZtwWvcMgLCzAs7t8c'),
+}
 
 
 
@@ -112,15 +112,15 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 
 
