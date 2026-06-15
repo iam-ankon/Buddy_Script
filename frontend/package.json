@@ -21,7 +21,7 @@
   "devDependencies": {
     "react-scripts": "5.0.1"
   },
-  "proxy": "http://https://buddy-script-backend-s1zm.onrender.com/",
+  "proxy": "http://buddy-script-backend-s1zm.onrender.com/",
   "browserslist": {
     "production": [
       ">0.2%",

@@ -60,7 +60,7 @@ const Feed = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('http://https://buddy-script-backend-s1zm.onrender.com//api/posts/');
+      const response = await axios.get('http://buddy-script-backend-s1zm.onrender.com//api/posts/');
       // Ensure comments have their replies nested properly
       const postsData = response.data.results || response.data;
 
