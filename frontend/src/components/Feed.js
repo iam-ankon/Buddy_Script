@@ -181,7 +181,7 @@ const Feed = () => {
 
   const handleReplyLike = async (replyId) => {
     try {
-      await axios.post(`https://buddy-script-backend-s1zm.onrender.com/api/replies/${replyId}/like/`);
+      await axios.post(`https://buddy-script-backend-s1zm.onrender.com/api/comments/${replyId}/like/`);
       fetchPosts();
     } catch (error) {
       console.error('Error liking reply:', error);
