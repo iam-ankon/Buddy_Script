@@ -179,6 +179,15 @@ const Feed = () => {
     }
   };
 
+  const handleReplyLike = async (replyId) => {
+    try {
+      await axios.post(`https://buddy-script-backend-s1zm.onrender.com/api/replies/${replyId}/like/`);
+      fetchPosts();
+    } catch (error) {
+      console.error('Error liking reply:', error);
+    }
+  };
+
   const handleReply = async (commentId) => {
     const content = replyInputs[commentId];
     if (!content?.trim()) return;
@@ -737,16 +746,8 @@ const Feed = () => {
                                   </div>
                                   <p className="_comment_text_improved">{comment.content}</p>
                                   <div className="_comment_actions_improved">
-                                    <button
-                                      onClick={() => handleCommentLike(comment.id)}
-                                      className={`_action_btn_improved${comment.user_has_liked ? ' _action_btn_liked' : ''}`}
-                                    >
-                                      <svg
-                                        width="14" height="14" viewBox="0 0 24 24"
-                                        fill={comment.user_has_liked ? '#e0245e' : 'none'}
-                                        stroke={comment.user_has_liked ? '#e0245e' : 'currentColor'}
-                                        strokeWidth="2"
-                                      >
+                                    <button onClick={() => handleCommentLike(comment.id)} className="_action_btn_improved">
+                                      <svg width="14" height="14" viewBox="0 0 24 24" fill={comment.user_has_liked ? '#e0245e' : 'none'} stroke={comment.user_has_liked ? '#e0245e' : 'currentColor'} strokeWidth="2">
                                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                                       </svg>
                                       Like {comment.likes_count > 0 && <span className="_action_count">{comment.likes_count}</span>}
@@ -794,16 +795,11 @@ const Feed = () => {
                                           </div>
                                           <p className="_reply_text_improved">{reply.content}</p>
                                           <div className="_reply_actions_improved">
-                                            <button onClick={() => handleCommentLike(reply.id)} className="_action_btn_improved">
-                                              <svg
-                                                width="14" height="14" viewBox="0 0 24 24"
-                                                fill={reply.user_has_liked ? '#e0245e' : 'none'}
-                                                stroke={reply.user_has_liked ? '#e0245e' : 'currentColor'}
-                                                strokeWidth="2"
-                                              >
+                                            <button onClick={() => handleReplyLike(reply.id)} className="_action_btn_improved">
+                                              <svg width="14" height="14" viewBox="0 0 24 24" fill={reply.user_has_liked ? '#e0245e' : 'none'} stroke={reply.user_has_liked ? '#e0245e' : 'currentColor'} strokeWidth="2">
                                                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                                               </svg>
-                                              Like {reply.likes_count > 0 && `(${reply.likes_count})`}
+                                              Like {reply.likes_count > 0 && <span className="_action_count">{reply.likes_count}</span>}
                                             </button>
                                           </div>
                                         </div>
