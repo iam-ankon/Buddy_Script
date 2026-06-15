@@ -2,6 +2,7 @@
 from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
+import cloudinary
 import os, dj_database_url  # add dj_database_url
 
 
@@ -21,7 +22,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',           
     'rest_framework',
     'corsheaders',
     'api',
@@ -77,6 +80,18 @@ DATABASES = {
     )
 }
 
+
+# Cloudinary config
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('df1ha3spa'),
+    'API_KEY': os.getenv('293153555884315'),
+    'API_SECRET': os.getenv('hjVTGSdsmoZtwWvcMgLCzAs7t8c'),
+}
+
+
+
+
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -96,6 +111,8 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
