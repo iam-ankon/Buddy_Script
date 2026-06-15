@@ -803,7 +803,7 @@ const Feed = () => {
                                     const content = replyInputs[comment.id];
                                     if (!content?.trim()) return;
                                     try {
-                                      await axios.post(`http://https://buddy-script-backend-s1zm.onrender.com//api/comments/${comment.id}/reply/`, { content });
+                                      await axios.post(`https://buddy-script-backend-s1zm.onrender.com/api/comments/${comment.id}/reply/`, { content });
                                       setReplyInputs({ ...replyInputs, [comment.id]: '' });
                                       await fetchPosts(); // Refresh to show the new reply
                                     } catch (error) {
